@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    environment {
+        APP_NAME = "myapp"
+        RELEASE = "4.0"
+        DOCKER_USR = "Tejasgowda5476"
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+        IMAGE_TAG = "${RELEASE}-${BUILD-NUMBER}"
+
+    }
+    stages{
+        stage("checkout"){
+            steps{
+                checkput scm
+            }
+        }
+        stage("build"){
+            steps{
+                sh "mvn clean package"
+            }
+        }
+        stage("test"){
+            steps{
+                sh "mnv test"
+                sh "ls /var/lib/jenkins/workspace/${JOB_NAME}/webapp/target/"
+            }
+        }
+        stage("build image"){
+            steps{
+                sh "docker built -t ${DOCKER_USR}/${APP_NAME}:${IMAGE_TAG} ."
+            }
+        }
+        stage("push images"){
+            steps{
+                echo "docker_usr: ${DOCKER_USR}"
+                echo "app_name: ${APP_NAME}"
+                echo "build number: ${BUILD_NUMBER}"
+                sh "docker images"
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --Password'
+                sh 'docker push ${DOCKER_USR}/${APP_NAME}:${IMAGE_TAG}'
+            }
+        }
+    }
+    
+}
