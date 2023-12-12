@@ -4,7 +4,7 @@ pipeline {
         APP_NAME = "myapp"
         RELEASE = "4.0"
         DOCKER_USR = "Tejasgowda5476"
-        DOCKERHUB_CREDENTIALS = credentials('Tejas5476@')
+        DOCKERHUB_CREDENTIALS = credentials('Likitha5476@')
         IMAGE_TAG = "${RELEASE}-${BUILD-NUMBER}"
 
     }
