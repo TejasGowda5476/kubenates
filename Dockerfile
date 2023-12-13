@@ -1,12 +1,11 @@
-# Use the official Tomcat image from Docker Hub
+# Use an official Tomcat image as the base image
 FROM tomcat:latest
 
+# Remove the default Tomcat applications
+RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copy your WAR file into the Tomcat webapps directory
-FROM tomcat:latest
-
-# Copy the WAR file into the webapps directory of Tomcat
-COPY myapp.war /usr/local/tomcat/webapps/
+COPY /webapp/target/webapp.war /usr/local/tomcat/webapps/
 
 # Expose the default Tomcat port
 EXPOSE 8080
