@@ -1,11 +1,37 @@
-<h1>This is an H1 tag. Use it in the title.</h1>
+<form action="action_page.php">
+  <div class="container">
+    <h1>Welcome to MNP Tech Register to become expert in AWS and DevOps with us..</h1>
+    <p>Please diligently complete this form to initiate the account creation process..</p>
+    <hr>
+     
+    <label for="Name"><b>Enter Name</b></label>
+    <input type="text" placeholder="Enter Full Name" name="Name" id="Name" required>
+    <br>
+    
+    <label for="mobile"><b>Enter mobile</b></label>
+    <input type="text" placeholder="Enter moible number" name="mobile" id="mobile" required>
+    <br>
 
-<h2>This is an H2 tag. Use it in section headers.</h2>
+    <label for="email"><b>Enter Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+    <br>
 
-<h3>This is an H3 tag. Use it in sub-sections.</h3>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <br>
 
-<h4>This is an H4 tag. They are not used very often.</h4>
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+    <hr>
+    <br>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div>
 
-<h5>This is an H5 tag.</h5>
-
-<h6>This is an H6 tag.</h6>
+   <h1> Thank You, Happy Learning </h1>
+   <h1> See You Again </h1>
+  
+</form>
