@@ -40,11 +40,9 @@ pipeline {
                 echo "DOCKER_USR: ${DOCKER_USR}"
                 echo "APP_NAME: ${APP_NAME}"
                 echo "BUILD_NUMBER: ${BUILD_NUMBER}"
-                echo "DOCKERHUB_CREDENTIALS: ${DOCKERHUB_CREDENTIALS}"
                 sh "docker images"
-                sh "echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${DOCKERHUB_CREDENTIALS_USR} --password"
-                echo "Pushing Docker image with tag: ${IMAGE_TAG}"
-                sh "docker push ${DOCKER_USR}/${APP_NAME}:${IMAGE_TAG}"
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker push ${DOCKER_USR}/${APP_NAME}:${IMAGE_TAG}'
             }
         }
     }
