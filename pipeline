@@ -18,6 +18,11 @@ pipeline {
                 sh "mvn clean package"
             }
         }
+        stage("scanner"){
+            steps {
+                sh "/opt/sonar-scanner/bin/sonar-scanner -X -Dproject.settings=sonar-project.properties"
+            }
+        }
         stage("test") {
             steps {
                 sh "mvn test"
